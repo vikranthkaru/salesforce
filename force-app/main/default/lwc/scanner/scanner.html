@@ -1,0 +1,20 @@
+<template>
+<video class="cameraDisplay" autoplay style="max-width: 800px; background-color: #000"></video>
+<button class="btnStartCamera" disabled={buttonDisabled} type="button" onclick={getCameraDevices}>Start Camera</button>
+<select class="cameraList"  onchange={fetchCameraValue}>
+    <template for:each = {listViews} for:item="listViewItem">
+        <option key={listViewItem.key} value={listViewItem.key}>{listViewItem.value}</option>
+     </template>
+</select>
+<button class="btnCapture" type="button" onclick={captureImage} >Capture &amp; Scan</button>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Image</th>
+        <th>Scan Result</th>
+    </tr>
+    </thead>
+    <tbody class="result"></tbody>
+</table>
+<canvas class="documentcanvas" style="display: none"></canvas>
+</template>

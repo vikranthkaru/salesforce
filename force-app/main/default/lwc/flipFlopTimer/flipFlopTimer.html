@@ -1,0 +1,64 @@
+<template>
+    <div class="clock">
+      <div class="flipper">
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="top">
+          <div class="text ">00</div>
+        </div>
+        <template if:true={showHours}>
+          <div class="top hourstop new">
+            <div class="text ">{newHours}</div>
+          </div>
+        </template>
+        <div class="bottom">
+          <div class="text">00</div>
+        </div>
+        <template if:true={showHours}>
+          <div class="bottom  hoursbottom new">
+            <div class="text ">00</div>
+          </div>
+        </template>
+      </div>
+      <div class="flipper">
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="top">
+          <div class="text ">00</div>
+        </div>
+        <template if:true={showMinutes}>
+          <div class="top minutestop new">
+            <div class="text ">{newMinutes}</div>
+          </div>
+        </template>
+        <div class="bottom">
+          <div class="text">00</div>
+        </div>
+        <template if:true={showMinutes}>
+          <div class="bottom minutesbottom new">
+            <div class="text ">00</div>
+          </div>
+        </template>
+      </div>
+      <div class="flipper">
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="top">
+          <div class="text ">00</div>
+        </div>
+        <template if:true={showSeconds}>
+          <div class="top  secondstop new">
+            <div class="text ">{newSeconds}</div>
+          </div>
+        </template>
+        <div class="bottom">
+          <div class="text">00</div>
+        </div>
+        <template if:true={showSeconds}>
+          <div class="bottom secondsbottom new">
+            <div class="text ">00</div>
+          </div>
+        </template>
+      </div>
+    </div>    
+  </template>

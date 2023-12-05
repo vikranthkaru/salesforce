@@ -1,0 +1,110 @@
+<template>
+    <!-- <template>
+        <div class="mainDiv">
+            <div class="headerDiv">
+                <div class="header">
+                    <lightning-icon class="slds-icon_small" icon-name="utility:retail_execution" title="SLA"></lightning-icon> &nbsp; {count} 
+                 </div>
+            </div>
+            <lightning-card >
+                <h5 slot="title">
+                </h5>
+                <div slot="footer">
+                    <a role="button" disabled={disabled} onclick={func_show} ><p class="slds-truncate" title="View All">View All</p></a>
+                </div>
+                <div style="padding:1em">
+                <lightning-combobox label="Status Filter" options={filterOptions} value={status} onchange={func_handleSelection}
+                    class="slds-m-bottom_small"></lightning-combobox>
+                <template lwc:if={showAssignmentLog}>
+                    <template for:each={assignmentOnSingleScreen} for:item="itm">
+                        <div key={itm.Id} class="slds-m-bottom_small">
+                                <dl class="slds-dl_horizontal">
+                                    <dt class="slds-dl_horizontal__label">
+                                        <p class="slds-truncate" title="Status">SLA Number:</p>
+                                    </dt>
+                                    <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                        <div>
+                                            <a data-id={itm.Id} role="button" onclick={func_RedirectToRecords} ><p class="slds-truncate" title="SLA">{itm.Name}</p></a>
+                                        </div>
+                                    </dd>
+                                    <dt class="slds-dl_horizontal__label">
+                                        <p class="slds-truncate" title="Status">Qualifier Status:</p>
+                                    </dt>
+                                    <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                        <p class="slds-truncate" title="Status">{itm.Qualifier_Status__c}</p>
+                                    </dd>
+                                    <dt class="slds-dl_horizontal__label">
+                                        <p class="slds-truncate" title="Status">Status:</p>
+                                    </dt>
+                                    <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                        <p class="slds-truncate" title="Status">{itm.SLA_Status__c}</p>
+                                    </dd>
+                                    <dt class="slds-dl_horizontal__label">
+                                        <p class="slds-truncate" title="Actual SLA Start Time">Actual SLA Start Time:</p>
+                                    </dt>
+                                    <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                        <template lwc:if={itm.nwcs_ldl__AssignedDate__c}>
+                                            <lightning-formatted-date-time
+                                            value={itm.nwcs_ldl__AssignedDate__c}
+                                            year="numeric"
+                                            day="2-digit"
+                                            month="long"
+                                            hour="2-digit"
+                                            minute="2-digit"
+                                        ></lightning-formatted-date-time>
+                                        </template>
+                                        <template lwc:else>
+                                            <p class="slds-truncate" title="Actual SLA Start Time"></p> 
+                                        </template>
+                                    </dd>
+                                    <dt class="slds-dl_horizontal__label">
+                                        <p class="slds-truncate" title="Actual SLA End Time">Actual SLA End Time:</p>
+                                    </dt>
+                                    <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                        <template lwc:if={itm.nwcs_ldl__NotificationDue__c}>
+                                            <lightning-formatted-date-time
+                                            value={itm.nwcs_ldl__NotificationDue__c}
+                                            year="numeric"
+                                            day="2-digit"
+                                            month="long"
+                                            hour="2-digit"
+                                            minute="2-digit"
+                                        ></lightning-formatted-date-time>
+                                        </template>
+                                        <template lwc:else>
+                                            <p class="slds-truncate" title="Actual SLA Start Time"></p> 
+                                        </template>
+                                    </dd>
+                                </dl>
+                        </div>
+                    </template>
+                </template>
+                <template lwc:else>
+                    <p>{noDisplay}</p>
+                </template>
+                </div>
+    
+                <template lwc:if={showTable}>
+    
+                    <section aria-modal="true" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container ">
+                            <header class="slds-modal__header">
+                                <h2 class="slds-text-heading_small">{LabelName}</h2>
+                                <lightning-icon class="slds-modal__close" icon-name="utility:close" size="small" onclick={func_closeModal}></lightning-icon>
+                            </header>
+                            <div class="slds-modal__content tableStyle">
+                                <c-generic-lightning-data-table
+                                records={assignmentLog} columns={columns} show-check-box={showCheckBox}
+                                show-row-number={showRowNumber} initiate-table={showTable}></c-generic-lightning-data-table> 
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button variant="brand" label="Cancel" onclick={func_closeModal} class="slds-p-around_x-small"></lightning-button>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>       
+                </template>
+            </lightning-card>
+        </div>
+    </template>   -->
+</template>

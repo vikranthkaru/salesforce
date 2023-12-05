@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+     <targetConfigs>
+        <targetConfig targets="lightning__HomePage,lightning__RecordPage">
+              <property name="sObjName" type="String" label="Object" required="true" datasource="apex://reusableDataTableDesignComponent"/>
+              <property name="filterCriteria" type="String" label = "Filter" default = " Where Id =:recordId"/>
+              <property name="recordId" type="String" default="00000000000" label = "Use Different Id"/>
+              <property name="limitValue" type="Integer" label="Limit" required="true" default="1000"/>
+              <property name="recordPerPage" type="String" default="10,20,30,40" label="Select How Many Records Needs to Displayed Per Page"/>
+              <property name="columns" type="String" label="Columns" default="[{label:'Name', fieldName:'Name', sortable:true}, {label:'Phone',fieldName:'Phone'}, {label:'Account Source',fieldName:'AccountSource'}, {label:'Rating',fieldName:'Rating'},{type:'action',typeAttributes:{rowActions:[{label:'View',name:'view'},{label:'Edit',name:'edit'}]}}]"/>
+              <property name="isLightningPage" type="boolean" label="Lightning Page" default="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

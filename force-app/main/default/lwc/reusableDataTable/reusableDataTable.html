@@ -1,0 +1,23 @@
+<template>
+        <template if:true={_records}>
+                <c-paginator-component
+                page-size-options = {pageSizeOptions}
+                records={_records} 
+                total-records={_records.length} 
+                show-search-box="true" 
+                onpaginatorchange={func_handlePaginatorChange}>
+                </c-paginator-component>
+                <lightning-datatable
+                key-field="Id"
+                data={recordsToDisplay}  
+                columns={columns}  
+                hide-checkbox-column 
+                show-row-number-column={showRowNumber}
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={func_onHandleSort}
+                onrowaction={func_handleRowAction}>
+                </lightning-datatable> 
+        </template>
+</template>
