@@ -1,6 +1,6 @@
 import { LightningElement,api,track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import { showToastMessage } from "c/utilModule";
+import { showToastMessage,handleErrors } from "c/utilModule";
 import jsFetchDataFromController from '@salesforce/apex/ReusableDataTableController.fetchRecords';
 export default class ReusableDataTable extends NavigationMixin(LightningElement) {
 
@@ -9,7 +9,7 @@ export default class ReusableDataTable extends NavigationMixin(LightningElement)
     @api records;  
     @api recordId; 
     @api sFields;
-    @api limitValue = 1000; 
+    @api limitValue; 
     @api recordPerPage; 
     @api columns; 
     @api showCheckBox; 
@@ -53,7 +53,7 @@ export default class ReusableDataTable extends NavigationMixin(LightningElement)
             this.func_processRecords(result);
         })
         .catch(error=>{
-            let evt = showToastMessage("Error", "Oops looks like not able to fetch records, please contact admin team", error);
+            let evt = showToastMessage("Error", "Oops looks like not able to fetch records, Please priovide admin with error : "+handleErrors(error), 'error');
             this.dispatchEvent(evt);
         });
     }
