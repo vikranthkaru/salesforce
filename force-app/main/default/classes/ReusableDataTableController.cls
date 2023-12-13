@@ -1,20 +1,30 @@
 public class ReusableDataTableController {
     @AuraEnabled
-    public static list<sObject> fetchRecords(string sObjectName,string sObjectFields, string filterCriteria,string recordId,integer limitValue,integer offsetValue)
+    public static list<sObject> fetchRecords(string sObjectName, string filterCriteria,string recordId,integer limitValue)
     {
         try
         {
-            string sQuery = sObjectFields;
+            string sQuery = createDynamicQuery(sObjectName);
             if(!string.isBlank(filterCriteria))
             {
                 sQuery += ' ' + filterCriteria;
             }
-            sQuery += ' LIMIT '+limitValue + ' OFFSET ' + offsetValue;
+            sQuery += ' LIMIT '+limitValue;
             return DataBase.Query(sQuery);
         }
         catch(Exception e)
         {
             throw new AuraHandledException(LightningErrorFrameWork.handleErrorMessage(e.getMessage()));
         }
+    }
+
+    public static string createDynamicQuery(string sObjectName)
+    {
+        List<String> fieldNames = new List<String>();
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get(sObjectName);
+        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
+        Map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
+        fieldNames.addAll(fieldMap.keySet());
+        return 'Select ' + String.join(fieldNames, ',')+ ' from '+ sObjectName;
     }
 }
