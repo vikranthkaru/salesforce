@@ -40,19 +40,23 @@ export default class ReusableDataTable extends NavigationMixin(LightningElement)
                 this.func_processRecords(this.records);
             }
         }
-        else
-        {
-             this.func_fetchDataFromController();
-        }
     }
 
-   async func_fetchDataFromController()
+    connectedCallback()
+    {
+        if(this.records == undefined) 
+        {
+            this.func_fetchDataFromController();
+        }
+    }
+    async func_fetchDataFromController()
     {
         jsFetchDataFromController({sObjectName:this.sObjName,filterCriteria:this.filterCriteria,recordId:this.recordId,limitValue:this.limitValue})
         .then(result=>{
             this.func_processRecords(result);
         })
         .catch(error=>{
+            console.log('error--->'+JSON.stringify(error));
             let evt = showToastMessage("Error", "Oops looks like not able to fetch records, Please priovide admin with error : "+handleErrors(error), 'error');
             this.dispatchEvent(evt);
         });
