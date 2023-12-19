@@ -39,7 +39,7 @@ export default class RecordsOverview extends LightningElement {
         options: {
             responsive: true,
             legend: {
-                position: 'right'
+                display: false
             },
             animation: {
                 animateScale: true,
@@ -72,9 +72,10 @@ export default class RecordsOverview extends LightningElement {
     }
 
     updateChart(count, label) {
-        this.chart.data.labels.push(label);
+       // this.chart.data.labels.push(label);
         this.chart.data.datasets.forEach((dataset) => {
             dataset.data.push(count);
+            dataset.label = label;
             var red = Math.floor(Math.random() * 256); // Random value between 0 and 255
             var green = Math.floor(Math.random() * 256);
             var blue = Math.floor(Math.random() * 256);

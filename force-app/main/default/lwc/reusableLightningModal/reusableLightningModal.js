@@ -20,7 +20,6 @@ export default class ReusableLightningModal extends LightningModal {
         if(val != undefined)
         {
             const componentName = `c/${val.name}`;
-            console.log('componentName-->'+componentName);
             this.childProps = val.childProps;
             this.label = val.label;
             import(componentName).then(({default : ctx}) =>{
