@@ -105,7 +105,6 @@ export default class ReusableDataTable extends NavigationMixin(LightningElement)
     }
 
     func_handleRowAction( event ) {
- 
         const actionName = event.detail.action.name;
         const row = event.detail.row;
         switch ( actionName ) {

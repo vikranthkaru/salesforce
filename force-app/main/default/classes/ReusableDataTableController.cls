@@ -9,6 +9,7 @@ public class ReusableDataTableController {
             {
                 sQuery += ' ' + filterCriteria;
             }
+            if(limitValue != null) 
             sQuery += ' LIMIT '+limitValue;
             return DataBase.Query(sQuery);
         }
