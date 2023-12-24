@@ -1,0 +1,2 @@
+On record triggered flows for fast field updates we cannot use subflows.
+https://help.salesforce.com/s/articleView?id=sf.flow_considerations_trigger_record.htm&type=5
