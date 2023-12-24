@@ -56,7 +56,6 @@ export default class ReusableDataTable extends NavigationMixin(LightningElement)
             this.func_processRecords(result);
         })
         .catch(error=>{
-            console.log('error--->'+JSON.stringify(error));
             let evt = showToastMessage("Error", "Oops looks like not able to fetch records, Please priovide admin with error : "+handleErrors(error), 'error');
             this.dispatchEvent(evt);
         });

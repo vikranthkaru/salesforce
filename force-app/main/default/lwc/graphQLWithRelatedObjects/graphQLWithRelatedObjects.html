@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <header>
+            <h1 class="header">GraphQL Source</h1>
+        </header>
+        <main class="container">
+            <div class="slds-var-m-around_medium">
+                <lightning-input type="search" onchange={handleKeyChange} class="slds-var-m-bottom_small" label="Search"
+                    value={searchKey}></lightning-input>
+                <c-button label="Refresh" variant="brand" onclick={handleRefresh}></c-button>
+                <template lwc:if={accounts}>
+                    <c-paginator-component
+                    page-size-options = {pageSizeOptions}
+                    records={accounts} 
+                    total-records={accounts.length} 
+                    show-search-box="true" 
+                    onpaginatorchange={handlePaginatorChange}>
+                    </c-paginator-component>
+                    <template for:each={displayaccounts} for:item="account">
+                        <c-collapsible-section key={account.Id} id={account.Id} label={account.Name}>
+                            <b>Contacts:</b> <br/>
+                            <template for:each={account.Contact.edges} for:item="contact">
+                                {contact.node.Name.value} <br key={contact.node.Name.value}/>
+                            </template>
+                            <hr/>
+                            <b>Cases: </b> <br/>
+                            <template for:each={account.Case.edges} for:item="cases">
+                                {cases.node.CaseNumber.value} <br key={cases.node.CaseNumber.value}/>
+                            </template>
+                        </c-collapsible-section>
+                    </template>
+                </template>
+            </div>
+        </main>
+        <footer>
+        </footer>
+    </lightning-card>
+</template>
