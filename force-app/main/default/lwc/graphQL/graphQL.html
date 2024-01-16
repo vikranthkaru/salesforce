@@ -1,0 +1,27 @@
+<template>
+    <header>
+        <h1 class="pselection-title">GraphQL Source</h1>
+    </header>
+    <main class="pselection-container">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="search"
+                onchange={handleKeyChange}
+                class="slds-var-m-bottom_small"
+                label="Search"
+                value={searchKey}
+            ></lightning-input>
+            <template lwc:if={contacts.data}>
+                <template
+                    for:each={contacts.data.uiapi.query.Contact.edges}
+                    for:item="contact"
+                >
+                    <p key={contact.node.Id}>{contact.node.Name.value}</p>
+                </template>
+            </template>
+        </div>
+    </main>
+    <footer>
+      
+    </footer>
+</template>
